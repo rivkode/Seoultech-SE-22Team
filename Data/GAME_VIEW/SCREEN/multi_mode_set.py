@@ -14,10 +14,9 @@ from _thread import *
 import pickle
 
 from queue import Queue
-server_pw = ""
+
 
 def multi_mode_set(SCREEN, SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT, mode=MODE_NORMAL):
-    global server_pw
     init_bg(SCREEN, SCREEN_PATH + "options_screen.png", SCREEN_WIDTH, SCREEN_HEIGHT)
 
     back_button = Button(image=pygame.image.load(BUTTON_PATH + "back_button.png"),

@@ -28,14 +28,14 @@ def multi_loby(SCREEN, SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT,
                           size=(BUTTON_WIDTH, BUTTON_HEIGHT))
 
     AI_1 = Button(image=pygame.image.load(BUTTON_PATH + "empty.png"),
-                  pos=(x_pos - set_size(40, SCREEN_WIDTH), y_pos - set_size(250, SCREEN_WIDTH)),
+                  pos=(x_pos - set_size(360, SCREEN_WIDTH), y_pos - set_size(180, SCREEN_WIDTH)),
                   size=(set_size(100, SCREEN_WIDTH), set_size(100, SCREEN_WIDTH)))
     AI_2 = Button(image=pygame.image.load(BUTTON_PATH + "empty.png"),
-                  pos=(x_pos + set_size(160, SCREEN_WIDTH), y_pos - set_size(250, SCREEN_WIDTH)),
+                  pos=(x_pos + set_size(100, SCREEN_WIDTH), y_pos - set_size(250, SCREEN_WIDTH)),
                   size=(set_size(100, SCREEN_WIDTH), set_size(100, SCREEN_WIDTH)))
 
     Player_1 = Button(image=pygame.image.load(BUTTON_PATH + "empty.png"),
-                      pos=(x_pos+50, y_pos - set_size(20, SCREEN_WIDTH)),
+                      pos=(x_pos, y_pos + set_size(10, SCREEN_WIDTH)),
                       size=(set_size(100, SCREEN_WIDTH), set_size(100, SCREEN_WIDTH)))
 
     title_text = Text(text_input="Set computer that will play with you",
@@ -67,19 +67,23 @@ def multi_loby(SCREEN, SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT,
     input_boxes = [TextBox(SCREEN.get_rect().left + set_size(535, SCREEN_WIDTH),
                            set_size(540, SCREEN_WIDTH),
                            set_size(200, SCREEN_WIDTH),
-                           set_size(32, SCREEN_WIDTH)),
-                   TextBox(SCREEN.get_rect().left + set_size(650, SCREEN_WIDTH),
-                           set_size(200, SCREEN_WIDTH),
-                           set_size(170, SCREEN_WIDTH),
-                           set_size(32, SCREEN_WIDTH)),
-                   TextBox(SCREEN.get_rect().left + set_size(450, SCREEN_WIDTH),
-                           set_size(200, SCREEN_WIDTH),
-                           set_size(170, SCREEN_WIDTH),
-                           set_size(32, SCREEN_WIDTH)),
-                   TextBox(SCREEN.get_rect().left + set_size(535, SCREEN_WIDTH),
-                           set_size(430, SCREEN_WIDTH),
-                           set_size(200, SCREEN_WIDTH),
                            set_size(32, SCREEN_WIDTH))]
+
+    for i in range(0, 2):
+        input_boxes.append(
+            TextBox(SCREEN.get_rect().left + set_size(130 + i * 200, SCREEN_WIDTH),
+                    set_size(270, SCREEN_WIDTH),
+                    set_size(170, SCREEN_WIDTH),
+                    set_size(32, SCREEN_WIDTH))
+        )
+
+    for i in range(0, 2):
+        input_boxes.append(
+            TextBox(SCREEN.get_rect().left + set_size(400 + i * 200, SCREEN_WIDTH),
+                    set_size(200, SCREEN_WIDTH),
+                    set_size(170, SCREEN_WIDTH),
+                    set_size(32, SCREEN_WIDTH))
+        )
 
     init_view(SCREEN, [back_button, start_button, AI_1, AI_2, Player_1])
     bool_list = [False, False]
