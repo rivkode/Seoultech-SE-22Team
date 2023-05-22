@@ -138,7 +138,10 @@ def multi_loby(SCREEN, SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT,
         for box in input_boxes:
             box.update()
         init_bg(SCREEN, SCREEN_PATH + "options_screen.png", SCREEN_WIDTH, SCREEN_HEIGHT)
-        init_view(SCREEN, [back_button, start_button, AI_1, AI_2, Player_1])
+        from Data.SOCKET.server_socket_m import join
+        if join == True:
+            AI_1.image=pygame.image.load(BUTTON_PATH + "1_checked.png")    
+        init_view(SCREEN, [back_button, start_button, AI_1, AI_2])
         title_text.init_text()
         title_text_1.init_text()
         subtitle_text.init_text()
