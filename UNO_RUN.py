@@ -26,6 +26,8 @@ def main_screen():
     center_x = SCREEN_WIDTH / 2 - BUTTON_WIDTH / 2
     center_y = SCREEN_HEIGHT / 2 - BUTTON_HEIGHT / 2
 
+    flag = 0
+    
     init_bg(SCREEN, SCREEN_PATH + "start_screen.jpeg", SCREEN_WIDTH, SCREEN_HEIGHT)
 
     play_button = Button(image=pygame.image.load(BUTTON_PATH + "play_button.png"),
@@ -54,6 +56,7 @@ def main_screen():
         init_view(SCREEN, [play_button, options_button, exit_button, achievements_button])
         title_text.init_text()
 
+        
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quit()
@@ -72,7 +75,7 @@ def main_screen():
                 elif achievements_button.rect.collidepoint(event.pos):
                     CLICK_SOUND.play(0)
                     from Data.GAME_VIEW.SCREEN.achievement import achievement_screen
-                    achievement_screen(SCREEN, SCREEN_WIDTH, SCREEN_HEIGHT, "main")
+                    achievement_screen(SCREEN, SCREEN_WIDTH, SCREEN_HEIGHT, BUTTON_WIDTH, BUTTON_HEIGHT)
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
                     if flag > 1:
